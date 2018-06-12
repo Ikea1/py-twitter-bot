@@ -9,9 +9,16 @@ def reply(tweet):
     """Return text to be used as a reply"""
     message = tweet['text']
     user = tweet['user']['screen_name']
+    if "hi" in message.lower():
+        berlin_time = datetime.now(timezone('Europe/Berlin'))
+        date = berlin_time.strftime("It is %H:%M:%S on a %A.")
+        return "Hi @" + user + "! " + date
+    return None
 
 def idle_text():
     """Return text that is tweeted when not replying"""
     # Construct the text we want to tweet out (280 chars max)
-    text = "Hallo, HPI! Die ist der Bot Ikea1!"
+    berlin_time = datetime.now(timezone('Europe/Berlin'))
+    date = berlin_time.strftime("It is %H:%M:%S on a %A.")
+    text = "Hallo, HPI! Dies ist der Bot Ikea1!"
     return text
